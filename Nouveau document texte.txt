@@ -1,0 +1,4 @@
+npm install password-validator
+npm install email-validator
+npm install bootstrap
+yarn add bootstrap

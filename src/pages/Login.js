@@ -1,7 +1,6 @@
-import React from 'react';
-import Navigation from '../components/Navigation';
 import { Link,useNavigate } from 'react-router-dom';
 //import "./login.css"
+import Navigation from '../components/Navigation';
 import { useState } from "react";
 import {API_URL} from "./Signup"
 
@@ -120,22 +119,22 @@ function Login(){
             
                 <div  className="form-group">
                   
-                  <label>Email</label>
+                  <label>Email address</label>
                   <input
                     type="email"
                     className="form-control"
                     id="emaillogin"
-                    placeholder="Email"
+                    placeholder="Enter email"
                   />
                 </div>
                 <div className="form-group">
-                  <label>Mot de passe</label>
+                  <label>Password</label>
                   <input
                     type="password"
                     className="form-control"
                     autoComplete="on"
                     id="passwordlogin"
-                    placeholder="Mot de passe"/>
+                    placeholder="Enter password"/>
                 </div>
                 <div className="form-group">
                   <div className="custom-control custom-checkbox">
@@ -148,16 +147,16 @@ function Login(){
                       className="custom-control-label"
                       htmlFor="customCheck1"
                     >
-                      Me le rappeler
+                      Remember me
                     </label>
                   </div>
                 </div>
                 <button type="submit" className="btn btn-primary btn-block" onClick={(event) => LoginUser(event)}>
-                  Connexion
+                  Submit
                 </button>
                 
                 <p className="forgot-password text-right">
-                  Vous n'avez pas encore de compte: <Link to ="/signup"><a href="#">Inscription?</a></Link> 
+                  Don't have account <Link to ="/signup"><a href="#">sign Up?</a></Link> 
                 </p>
               </form>
             </div>

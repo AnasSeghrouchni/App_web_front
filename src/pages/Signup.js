@@ -1,9 +1,8 @@
-import React from 'react';
-import Navigation from '../components/Navigation';
-import { useState } from 'react';
+import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
+import React from "react";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
+import Navigation from '../components/Navigation';
 //import "./signup.css"
 
 var validator = require("email-validator");
@@ -142,9 +141,8 @@ function Signup(){
         <div className="auth-wrapper">
           <div className="auth-inner">
             <div>
-            
+            <h1 style={{align: "center", backgroundColor: "lightblue"}}>Connexion</h1>
             <form>
-            <h1 style={{align: "center", backgroundColor: "lightblue"}}>Inscription</h1>
               <div className="form-group">
                 <label>Nom</label>
                 <input
@@ -182,9 +180,8 @@ function Signup(){
               <div className="form-group">
                 <label>Mot de passe</label>
                 <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Mot de passe"
+                  type="Mot de passe"
+                  className="Mot de passe"
                   id="password"/>
               </div>
               <div className="form-group">
@@ -196,12 +193,11 @@ function Signup(){
                   id="password"/>
               </div>
               <button type="submit" className="btn btn-primary btn-block"
-              onClick={(event) => CreateUser(event)}>Inscription</button>
-             
+              onClick={(event) => CreateUser(event)}>Sign Up</button>
+             </form>
               <p className="forgot-password text-right">
-                Déjà inscrit: <Link to="/connexion"><a href="">connection ?</a></Link> 
+                Already registered <Link to="/signin"><a href="">sign in?</a></Link> 
               </p>
-              </form>
             </div>
           </div>
         </div>
