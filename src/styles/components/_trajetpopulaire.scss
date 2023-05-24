@@ -1,0 +1,25 @@
+.trajetpop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      color: grey;
+      border: none;
+      padding: 35px 150px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-align: center; /* Add this line */
+  
+      &:hover {
+        background-color: lightgrey;
+      }
+    }
+  }
+  

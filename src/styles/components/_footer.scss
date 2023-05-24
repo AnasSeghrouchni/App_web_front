@@ -1,0 +1,63 @@
+  .footer{
+      .MDBFooter {
+        background-color: light;
+        text-align: center;
+        color: #6c757d; /* Couleur de texte grisé */
+    }
+    
+    .MDBContainer {
+        text-align: center;
+        margin-top: 5rem;
+    }
+    
+    .MDBRow {
+        margin-top: 3rem;
+    }
+    
+    .MDBCol {
+        margin: auto;
+        margin-bottom: auto;
+        margin-top: auto;
+    }
+    
+    h6 {
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-bottom: 0.4rem;
+    }
+    
+    p {
+        margin-bottom: 1rem;
+    }
+    
+    .text-center {
+        text-align: center;
+    }
+    
+    .text-reset {
+        color: inherit;
+        text-decoration: none;
+    }
+    
+    .fw-bold {
+        font-weight: bold;
+    }
+    
+    .text-muted {
+        color: #6c757d; /* Couleur de texte grisé */
+    }
+    
+    .text-uppercase {
+        text-transform: uppercase;
+    }
+    
+    .text-lg-start {
+        text-align: left;
+    }
+    
+    .text-center.p-2 {
+        text-align: center;
+        padding: 0.5rem;
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+}
