@@ -47,12 +47,13 @@ const FormulaireConnexion = () => {
 
                       // Store the authentication token in localStorage
                       localStorage.setItem('membre', JSON.stringify(membre));                   
-                      // Rediriger l'utilisateur vers la page de connexion ou afficher un message de succès
+                       if (res.ok) {// Rediriger l'utilisateur vers la page de connexion ou afficher un message de succès
                       // (par exemple, en utilisant React Router ou en mettant à jour l'état approprié)
                     } else {
                       // Gérer les erreurs d'inscription (par exemple, nom d'utilisateur déjà utilisé)
                       setError('Signin failed. Please try again.');
                     }
+                  }
                   } catch (error) {
                     // Gérer les erreurs de requête (par exemple, erreur de réseau)
                     setError('An error occurred. Please try again.');

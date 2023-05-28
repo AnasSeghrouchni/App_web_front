@@ -77,6 +77,7 @@ const ColisQuestion = () => {
         <p>Prix : {colis.prix}</p>
         <p>Départ : {colis.depart}</p>
         <p>Date limite : {colis.date_max}</p>
+        <p>Status : {colis.status}</p>
       </div>
       <Row>
         <Col>
