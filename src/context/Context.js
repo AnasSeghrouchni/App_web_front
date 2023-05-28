@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 
@@ -21,6 +21,17 @@ const MyProvider = ({ children }) => {
     membre,
     updateMembre,
   };
+
+  useEffect(() => {
+    console.log("useEffect");
+    const membreCache = localStorage.getItem("membre");
+    if (membreCache) {
+      setMembre(JSON.parse(membreCache));
+    }
+  }, []);
+    
+
+
 
   return (
     <MyContext.Provider value={contextValue}>

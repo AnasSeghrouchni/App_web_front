@@ -1,0 +1,6 @@
+2023/05/28-09:53:12.162 3 Reusing MANIFEST /home/n7student/projet-react/App_web_front/[some directory here]/Default/Local Storage/leveldb/MANIFEST-000001
+2023/05/28-09:53:12.163 3 Recovering log #9
+2023/05/28-09:53:12.165 3 Reusing old log /home/n7student/projet-react/App_web_front/[some directory here]/Default/Local Storage/leveldb/000009.log 
+2023/05/28-10:36:23.885 3 Level-0 table #13: started
+2023/05/28-10:36:23.895 3 Level-0 table #13: 163786 bytes OK
+2023/05/28-10:36:23.899 3 Delete type=0 #9

@@ -44,7 +44,9 @@ const FormulaireConnexion = () => {
                       updateMembre(membre);
                       console.log('update effectuée');
                       navigate('/');
-                      
+
+                      // Store the authentication token in localStorage
+                      localStorage.setItem('membre', JSON.stringify(membre));                   
                       // Rediriger l'utilisateur vers la page de connexion ou afficher un message de succès
                       // (par exemple, en utilisant React Router ou en mettant à jour l'état approprié)
                     } else {

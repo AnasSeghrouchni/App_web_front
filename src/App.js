@@ -8,6 +8,9 @@ import ProposerLivraison from './pages/ProposerLivraison';
 import LivrerColis from './pages/LivrerColis';
 import {  MyProvider } from './context/Context';
 import My_page from './pages/My_page';
+import Trajets from './pages/Trajets';
+import ColisQuestion from './pages/Colis_question';
+import Profil from './pages/Profil';
 
 const App = () => {
 
@@ -21,6 +24,9 @@ const App = () => {
         <Route path="/inscription" element={<Inscription />} />
         <Route path="/proposer-livraison" element={<ProposerLivraison />} />
         <Route path="/my-compte" element={<My_page />} />
+        <Route path="/trajets" element={<Trajets />} />
+        <Route path="/colis_question/:colisId" element={<ColisQuestion />} />
+        <Route path='/profil/:membreId' element={<Profil />} />
         <Route path="*" element={<NotFound />} />
 
       </Routes>

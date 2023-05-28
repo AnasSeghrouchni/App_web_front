@@ -55,7 +55,7 @@ const Inscription = () => {
             <Navigation />
             <div>
       <h1>Signup</h1>
-      <form onSubmit={handleSubmit}>
+      <form>
         <input
           type="text"
           placeholder="Nom"
@@ -100,6 +100,7 @@ const Inscription = () => {
         <br/>
         <input type="submit" 
                             value="S'inscrire"
+                            onClick={handleSubmit}
           />
       </form>
       {error && <p>{error}</p>}

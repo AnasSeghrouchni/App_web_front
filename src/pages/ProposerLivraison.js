@@ -1,68 +1,40 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
-import "../styles/list.css"
-import "../styles/form.css"
 import 'bootstrap/dist/css/bootstrap.css';
+import { useState } from 'react';
 
-function ProposerLivraison(){
+
+const ProposerLivraison = () => {
+    const [prix, setPrix] = useState();
+    const [depart, setDepart] = useState('');
+    const [destination, setDestination] = useState('');
+    const [date_max, setDate_max] = useState('');
+    const [poids, setPoids] = useState('');
+    const [taille, setTaille] = useState('');
+    const [photo, setPhoto] = useState('');
+    const [nom, setNom] = useState('');
+
+
     
-//fonction de creation d'un colis
- function createColis(event){
 
-    //construction de la requete
-    var API_URL = "http://localhost:8080/projet/rest/membres/createMembre"
-   var requestUrl = API_URL +"/Colis"
-
-   //variable qui signale la présence d'une erreur dans le formulaire
-  // var error = false
-
-   //variable indiquant si l'utilisa teur est connecté à internet
-   //var  connected = window.navigator.onLine
-   
-   //récupération des valeurs du formulaire
-   const depart= document.querySelector('#depart').value
-   const destination = document.querySelector('#destination').value
-   const date_max= document.querySelector('#date_max').value
-   const poids = document.querySelector('#poids').value
-   const taille= document.querySelector('#taille').value
-   const photo = document.querySelector('#photo').value
-   const prix= document.querySelector('#prix').value
-   
-   
-   
-   var token = localStorage.getItem("token")
-   const proprietaire = localStorage.getItem("user")
-   console.log(proprietaire)
-   var colis = {depart,destination,date_max,poids,taille,photo,prix,proprietaire}
-   var request = new XMLHttpRequest();
-   request.open('POST', requestUrl);
-   request.setRequestHeader('Authorization' , 'Bearer ' + token);
-   request.setRequestHeader('Content-Type' , 'application/json');
-   request.responseType = 'json';
-   colis = JSON.stringify(colis);
-   request.send(colis);
-   console.log(colis)
-   console.log(token)
-   console.log('avance')
-   request.onload = function(){ 
-       
-       const requestStatus = request.status
-
-       console.log(request.response)
-       
-       if(requestStatus === 500){
-           //var server_error = true
-         
-
-       }else if(requestStatus === 201){
-           //requête réussie
-           console.log('gooddd')
-           console.log(request.response)
-           //setSpaceName('listColis')
-       }
-    }
-    event.preventDefault();
-}
+    const createColis = async () => {
+        try{
+            const res = await fetch('http://localhost:8080/projet/rest/colis/createcolis', {
+                method: 'POST',
+                body: JSON.stringify({ nom,prix, depart, destination, date_max, poids, taille, photo, 'proprietaire' : JSON.parse(localStorage.getItem('membre'))}),
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              });
+                if (res.ok){
+                    console.log('creation ok');
+                    console.log(res.json());
+                }
+        }catch (error) {
+            console.log(error);
+            
+        }
+        }
     return (
         <div>
             <Navigation />
@@ -72,49 +44,61 @@ function ProposerLivraison(){
            <form>
                 <div className="row form-group">
                     <div className="col-25">
+                        <label htmlFor="nom">Nom</label>
+                    </div>
+                    <div className="col-75">
+                        <input type="text" className="form-control" id="nom" name="nom" placeholder="Nom du colis" onChange={(e) => setNom(e.target.value)}/>
+                    </div>
+
+                    <div className="col-25">
                         <label htmlFor="prix">Prix</label>
                     </div>
                     <div className="col-75">
-                        <input type="number" className="form-control" min="1" id="depart" name="depart" placeholder="Prix d'expédition du colis"/>
+                        <input type="number" 
+                        className="form-control" 
+                        min="1" 
+                        placeholder="Prix d'expédition du colis"
+                        onChange={(e) => setPrix(e.target.value)}
+                        />
                     </div>
                     <div className="col-25">
                         <label htmlFor="depart">Lieu de depart</label>
                     </div>
                     <div className="col-75">
-                        <input type="text" className="form-control" id="depart" name="depart" placeholder="Lieu de départ"/>
+                        <input type="text" className="form-control" id="depart" name="depart" placeholder="Lieu de départ" onChange={(e) => setDepart(e.target.value)}/>
                     </div>
                     <div className="col-25">
                         <label htmlFor="destination">Lieu de destination</label>
                     </div>
                     <div className="col-75">
-                        <input type="text" id="destination" className="form-control" name="destination" placeholder="Lieu de destination"/>
+                        <input type="text" id="destination" className="form-control" name="destination" placeholder="Lieu de destination" onChange={(e) => setDestination(e.target.value)}/>
                     </div>
                     <div className="col-25">
                         <label htmlFor="date_max">Date maximale d arrivee du colis </label>
                     </div>
                     <div className="col-75">
-                        <input type="date" id="date_max" className="form-control" name="date_max" placeholder="Date maximale d'arrivée"/>
+                        <input type="date" id="date_max" className="form-control" name="date_max" placeholder="Date maximale d'arrivée" onChange={(e) => setDate_max(e.target.value)}/>
                     </div>
                     <div className="col-25">
                         <label htmlFor="poids">Poids</label>
                     </div>
                     <div className="col-75">
-                        <input type="number" min="10" max="300" id="poids" className="form-control" name="poids" placeholder="Poids (en Kg)"/>
+                        <input type="number" min="10" max="300" id="poids" className="form-control" name="poids" placeholder="Poids (en Kg)" onChange={(e) => setPoids(e.target.value)}/>
                     </div>
                     <div className="col-25">
                         <label htmlFor="taille">Taille</label>
                     </div>
                     <div className="col-75">
-                        <input type="number" min="10" id="taille" className="form-control" name="taille" placeholder="Taille (en cm)"/>
+                        <input type="number" min="10" id="taille" className="form-control" name="taille" placeholder="Taille (en cm)" onChange={(e) => setTaille(e.target.value)}/>
                     </div>
                     <div className="col-25">
                         <label htmlFor="photo">Photo</label>
                     </div>
                     <div className="col-75">
-                        <input type="file"  id="photo" className="form-control" name="photo" placeholder="Photo"/>
+                        <input type="file"  id="photo" className="form-control" name="photo" placeholder="Photo" onChange={(e) => setPhoto(e.target.value)}/>
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={(event) => createColis(event)} >Save</button>
+                <button type="submit" className="btn btn-primary" onClick={createColis}>Proposer</button>
             </form>
       </div>
       </div>
