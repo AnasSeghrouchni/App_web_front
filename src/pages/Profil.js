@@ -47,7 +47,7 @@ const Profil = () => {
   const getAvisRecus = async () => {
     try {
       const res = await fetch(
-        `http://localhost:8080/projet/rest/membre/getallavisrecu?id=${membreId}`,
+        `http://localhost:8080/projet/rest/avis/getavis?id=${membreId}`,
         {
           method: 'GET',
           headers: {

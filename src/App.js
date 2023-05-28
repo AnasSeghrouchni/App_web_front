@@ -11,6 +11,8 @@ import My_page from './pages/My_page';
 import Trajets from './pages/Trajets';
 import ColisQuestion from './pages/Colis_question';
 import Profil from './pages/Profil';
+import Tous_colis_membre from './pages/Tous_colis_membre';
+import Tous_livraisons_membre from './pages/Tous_livraisons_membre';
 
 const App = () => {
 
@@ -24,6 +26,8 @@ const App = () => {
         <Route path="/inscription" element={<Inscription />} />
         <Route path="/proposer-livraison" element={<ProposerLivraison />} />
         <Route path="/my-compte" element={<My_page />} />
+        <Route path="/my-compte/colis" element={<Tous_colis_membre />} />
+        <Route path="/my-compte/livraisons" element={<Tous_livraisons_membre />} />
         <Route path="/trajets" element={<Trajets />} />
         <Route path="/colis_question/:colisId" element={<ColisQuestion />} />
         <Route path='/profil/:membreId' element={<Profil />} />

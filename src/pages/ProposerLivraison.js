@@ -13,6 +13,7 @@ const ProposerLivraison = () => {
     const [taille, setTaille] = useState('');
     const [photo, setPhoto] = useState('');
     const [nom, setNom] = useState('');
+    const [notification, setNotification] = useState('');
 
 
     
@@ -29,10 +30,15 @@ const ProposerLivraison = () => {
                 if (res.ok){
                     console.log('creation ok');
                     console.log(res.json());
-                }
+                    setNotification('Votre colis a bien été créé');
+                }else {
+                    console.log('Request failed with status:', res.status);
+                    setNotification('Une erreur est survenue');
+                  }
         }catch (error) {
             console.log(error);
-            
+            setNotification('Une erreur est survenue');
+            { <p>{notification}</p>}
         }
         }
     return (
