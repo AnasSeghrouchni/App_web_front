@@ -1,6 +1,5 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
-import { NavLink } from 'react-router-dom';
 import { MyContext } from '../context/Context';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -20,17 +19,14 @@ const My_page = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-
     localStorage.removeItem('membre');
-
     myContext.updateMembre({});
-
     navigate('/');
   };
 
   const handleEnableForm = () => {
     setIsFormDisabled(!isFormDisabled);
-    if (isFormDisabled){
+    if (isFormDisabled) {
       setNom(myContext.membre.nom);
       setPrenom(myContext.membre.prenom);
       setEmail(myContext.membre.email);
@@ -51,7 +47,7 @@ const My_page = () => {
       // Appeler l'API d'Modification avec les informations fournies
       const res = await fetch(`http://localhost:8080/projet/rest/membre/updatemembre?id=${membreId}`, {
         method: 'PUT',
-        body: JSON.stringify({ prenom, nom, email, mdp, adresse}),
+        body: JSON.stringify({ prenom, nom, email, mdp, adresse }),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -70,95 +66,89 @@ const My_page = () => {
     }
   };
 
-
   return (
     <div className='compte'>
       <Navigation />
-      <br/>
-      <br/>
-      <br/>
-      <ul className='navigation'>
-        <NavLink to='/' activeclassname='nav-active' className={(nav) => (nav.isActive ? "nav-active" : "")}>
-          <li><h4>Mes colis</h4></li>
-        </NavLink>
-        <NavLink to='/' activeclassname='nav-active' className={(nav) => (nav.isActive ? "nav-active" : "")}>
-          <li><h4>Mes livraisons</h4></li>
-        </NavLink>
-      </ul>
       <div className='membre-info'>
-      <Row className='justify-content-center'>
-        <Col>
-          <div style={{ textAlign: 'center' }}>
-      <button onClick={handleEnableForm}>Modifier</button>
-      </div> 
-      </Col>
-      <Col>
-      <div style={{ textAlign: 'right' }}>
-      <button onClick={handleLogout}>Deconnexion</button>
+        <Row className='justify-content-between'>
+          <Col xs={4}>
+            <div style={{ textAlign: 'left' }}>
+              <button onClick={handleEnableForm}>Modifier</button>
+            </div>
+          </Col>
+          <Col xs={4}>
+            <div style={{ textAlign: 'right' }}>
+              <button onClick={handleLogout}>Déconnexion</button>
+            </div>
+          </Col>
+        </Row>
+        <Row className='justify-content-between'>
+          <Col xs={8}>
+            <form className='modifierMembre'>
+              <label>Nom</label>
+              <input
+                type="text"
+                placeholder={myContext.membre.nom}
+                value={nom}
+                disabled={isFormDisabled}
+                onChange={(e) => setNom(e.target.value)}
+              />
+              <br />
+              <label>Prenom</label>
+              <input
+                type="text"
+                placeholder={myContext.membre.prenom}
+                value={prenom}
+                onChange={(e) => setPrenom(e.target.value)}
+                disabled={isFormDisabled}
+              />
+              <br />
+              <label>Mot de passe</label>
+              <input
+                type="password"
+                placeholder="Password"
+                value={mdp}
+                onChange={(e) => setMotdepasse(e.target.value)}
+                disabled={isFormDisabled}
+              />
+              <br />
+              <label>Adresse</label>
+              <input
+                type="text"
+                placeholder={myContext.membre.adresse}
+                value={adresse}
+                onChange={(e) => setAdresse(e.target.value)}
+                disabled={isFormDisabled}
+              />
+              <br />
+              <label>Email</label>
+              <input
+                type="email"
+                placeholder={myContext.membre.email}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isFormDisabled}
+              />
+              <br />
+              {error && <p>{error}</p>}
+              <div style={{ textAlign: 'center' }}>
+                <input
+                  type="submit"
+                  value="Soumettre"
+                  onClick={handleSubmit}
+                  disabled={isFormDisabled}
+                />
+              </div>
+            </form>
+          </Col>
+          <Col xs={4}>
+            <div className="bottom-buttons">
+              <button onClick={() => navigate('/my-compte/colis')}>Mes colis</button>
+              <button onClick={() => navigate('/my-compte/livraisons')}>Mes livraisons</button>
+            </div>
+          </Col>
+        </Row>
       </div>
-      </Col>
-      </Row> 
-      <form className='modifierMembre'>
-        <label>Nom</label>
-        <input
-          type="text"
-          placeholder={myContext.membre.nom}
-          value={nom}
-          disabled={isFormDisabled}
-          onChange={(e) => setNom(e.target.value)}
-        />
-        <br/>
-        <label>Prenom</label>
-        <input
-            type="text"
-            placeholder={myContext.membre.prenom}
-            value={prenom}
-            onChange={(e) => setPrenom(e.target.value)}
-            disabled={isFormDisabled}
-            />
-        <br/>
-        <label>Mot de passe</label>
-        <input
-          type="password"
-          placeholder="Password"
-          value={mdp}
-          onChange={(e) => setMotdepasse(e.target.value)}
-          disabled={isFormDisabled}
-        />
-        <br/>
-        <label>Adresse</label>
-        <input
-            type="text"
-            placeholder={myContext.membre.adresse}
-            value={adresse}
-            onChange={(e) => setAdresse(e.target.value)}
-            disabled={isFormDisabled}
-            />
-        <br/>
-        <label>Email</label>
-        <input
-            type="email"
-            placeholder={myContext.membre.email}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            disabled={isFormDisabled}
-            />
-        <br/>
-        {error && <p>{error}</p>}
-        <div style={{ textAlign: 'center' }}>
-        <input type="submit" 
-                            value="Soumettre"
-                            onClick={handleSubmit}
-                            disabled={isFormDisabled}
-          />
-          </div>
-      </form>
-      
-      
-    </div>
-        
-          
-        
     </div>
   );
 };

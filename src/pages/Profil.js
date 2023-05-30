@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import Avis from '../components/Avis';
-import { useNavigate, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 
 const Profil = () => {
   const { membreId } = useParams();
@@ -10,7 +10,6 @@ const Profil = () => {
   const [avisRecus, setAvisRecus] = useState([]);
   const [commentaire, setCommentaire] = useState('');
   const [etoiles, setEtoiles] = useState(0);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const getMembre = async () => {
@@ -87,7 +86,7 @@ const Profil = () => {
       if (res.ok) {
         console.log('ok avis');
         console.log('avis créé');
-        navigate('/profil/' + membre.id);
+        location.reload();
       } else {
         console.log('Request failed with status:', res.status);
       }
@@ -99,10 +98,7 @@ const Profil = () => {
   return (
     <div className='profil'>
       <Navigation />
-      <h1>Profil</h1>
-      <p>{membre.nom}</p>
-      <p>{membre.email}</p>
-
+      <h1 className='titre'>Profil de {membre.nom} {membre.prenom}</h1>
       <h2>Avis reçus</h2>
       {avisRecus.map((avis) => (
         <Avis key={avis.id} avis={avis} />

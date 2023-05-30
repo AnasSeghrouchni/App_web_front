@@ -38,6 +38,15 @@ const Colis = ({ colis }) => {
       onClick={handleClick}
     >
       <h3>{colis.nom}</h3>
+      <div>
+      <img
+        src={colis.photo}
+        style={{
+          width: 'auto',  // Largeur souhaitée
+          height: 'auto',  // Hauteur automatique pour maintenir les proportions
+        }}
+      />
+      </div>
       <p>De {colis.depart} à {colis.destination}</p>
       <p>A livrer avant le {colis.date_max}</p>
       <p className='owner'>Proposé par {colis.proprietaire.nom}</p>
@@ -50,6 +59,7 @@ Colis.propTypes = {
   colis: PropTypes.shape({
     id: PropTypes.number.isRequired,
     nom: PropTypes.string.isRequired,
+    photo: PropTypes.string.isRequired,
     destination: PropTypes.string.isRequired,
     prix: PropTypes.number.isRequired,
     depart: PropTypes.string.isRequired,

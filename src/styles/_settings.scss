@@ -11,7 +11,7 @@ $color-3: #282c34;
 $white: rgb(243, 243, 243);
 
 @mixin verticalCenter {
-  display: flex;
+
   justify-content: center;
   align-items: center;
 }
@@ -25,7 +25,7 @@ $white: rgb(243, 243, 243);
 body {
   background: $white;
   font-family: $font-1;
-  // @include verticalCenter;
+  //@include verticalCenter;
 }
 li {
   list-style-type: none;
@@ -44,14 +44,48 @@ li {
   margin-top: 150px;
 }
 
-form {
+.inscription{
+
+  display: flex;
+  font-size: 50px;
+  flex-direction: column;
+  align-items: center;
+  
+  form {
+  flex-direction: column;
+  justify-items: center;
   justify-content: center;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: -10px;
   width: 60rem;
+  }
+  
+  input {
+  padding: 0 1rem;
+  height: 4rem;
+  width: 100%;
+  margin: 5px;
+  border: none;
+  border-radius: 50px;
+  font-size: medium;
+  }
+
+  input[type="submit"] {
+    align-items: center;
+    
+    padding: auto;
+    height: 4rem;
+    width: 16rem;
+    margin: 0 1rem;
+    font-size: 1rem;
+    color: #fff;
+    background: orangered;
+    cursor: pointer;
+  }
 }
 
-input {
+
+button{
   justify-content: center;
   align-items: center;
   padding: 0 1rem;
@@ -61,20 +95,57 @@ input {
   border: none;
   border-radius: 50px;
   font-size: medium;
+  background-color: orangered;
+  color : white;
 }
 
-input[type="submit"] {
-  padding: auto;
+.modifierMembre{
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
   height: 4rem;
-  width: 16rem;
-  margin: 0 1rem;
-  font-size: 1rem;
-  color: #fff;
-  background: orangered;
-  cursor: pointer;
+  width: min-content;
+  margin: 3px;
+  border: none;
+  border-radius: 50px;
+  font-size: medium;
 }
 
+.proposer{
+  display: flex;
+  font-size: 50px;
+  flex-direction: column;
+  align-items: center;
+  
+  form {
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: -10px;
+  width: 60rem;
+  }
+  
+  input {
+  padding: 0 1rem;
+  height: 4rem;
+  width: 100%;
+  margin: 5px;
+  border: none;
+  border-radius: 50px;
+  font-size: medium;
+  }
 
+  input[type="submit"] {
+    align-items: center;
+    padding: auto;
+    height: 4rem;
+    width: 16rem;
+    margin: 0 1rem;
+    font-size: 1rem;
+    color: #fff;
+    background: orangered;
+    cursor: pointer;
+  }
 
-
-
+}

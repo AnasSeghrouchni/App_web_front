@@ -12,6 +12,7 @@ const ColisQuestion = () => {
   useEffect(() => {
     const recupColis = async () => {
       try {
+        
         const res = await fetch(
           `http://localhost:8080/projet/rest/colis/getcolisbyid?id=${colisId}`,
           {

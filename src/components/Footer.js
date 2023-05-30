@@ -14,8 +14,8 @@ const Footer = () => {
                 <MDBIcon icon="gem" className="me-3" />
                 ColiVoiturage
               </h6>
-              <p>
-                Vous en avez marre de péter je sais pas où pour aller chercher vos colis ? 
+              <p className='texte'>
+                Vous cherchez a vous faire livrer rapidement et à bas prix ?
                 N&apos;attendez plus et rejoignez-nous ! 
                 Vos colis se feront livrés par des particuliers, et vous pourrez vous-même livrer les colis des autres utilisateurs. 
                 En plus, notre planète a bien besoin de ça...
